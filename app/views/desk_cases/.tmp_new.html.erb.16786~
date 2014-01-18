@@ -1,5 +1,0 @@
-<h1>New desk_case</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', desk_cases_path %>

@@ -4,20 +4,23 @@
   <thead>
     <tr>
       <th>Name</th>
+	  <th>Description</th>
       <th>Enabled</th>
 	  <th>Color</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @desk_cases.each do |desk_case| %>
+    <% @desk_labels.each do |desk_label| %>
       <tr>
-     	<td><%= desk_case["name"] %></td>
-     	<td><%= desk_case["enabled"] %></td>
-      	<td><%= desk_case["color"] %></td>
+     	<td><%= desk_label["name"] %></td>
+		<td><%= desk_label["description"] %></td>
+     	<td><%= desk_label["enabled"]==true ? "Yes" : "No" %></td>
+      	<td><%= desk_label["color"] %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+<%= link_to 'New Label', new_desk_label_path %>

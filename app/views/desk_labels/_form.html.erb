@@ -1,0 +1,29 @@
+<%= form_for(@desk_label) do |f| %>
+  <% if @desk_label.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@desk_label.errors.count, "error") %> prohibited this desk_label from being saved:</h2>
+
+      <ul>
+      <% @desk_label.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+  	<%= f.label :name %>:
+    <%= f.text_field :name %><br />
+
+    <%= f.label :description %>:
+    <%= f.text_field :description %><br />
+	
+	<%= f.label :color %>:
+	<%= f.select(:color, options_for_select([['Default', 'default'], ['Blue', 'blue'], 
+      ['Yellow', 'yellow'], ['Red', 'red'], ['Orange', 'orange'], ['Green', 'green'], 
+      ['Black', 'black'], ['Purple', 'purple'], ['Brown', 'brown'], ['Grey', 'grey'], 
+      ['Pink', 'pink']])) %><br />
+	
+    <%= f.submit %>
+  </div>
+<% end %>
