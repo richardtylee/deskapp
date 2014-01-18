@@ -19,5 +19,18 @@ module Deskapp
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    
+    consumer = OAuth::Consumer.new(
+      "UKKln9ZW7XCG2qCvtGHw",
+      "LVOIrAHspvdZ7dY1XtoO0oHX6o41fhnNVqyhZ00O",
+      :site => "https://richardtylee.desk.com",
+      :scheme => :header
+    )
+
+    access_token = OAuth::AccessToken.from_hash(
+      consumer,
+      :oauth_token => "UMEVwrygiEVUBRquQpbA",
+      :oauth_token_secret => "gtwKICYAMau4ZTVFkQ6huMZtlSbpG0czs8sKrLlq"
+    )
   end
 end
