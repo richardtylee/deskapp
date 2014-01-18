@@ -55,4 +55,6 @@ Deskapp::Application.routes.draw do
   #   end
   resources :desk_cases
   resources :desk_labels
+  
+  root 'welcome#index'
 end
