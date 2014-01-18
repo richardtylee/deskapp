@@ -53,4 +53,6 @@ Deskapp::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  resources :desk_cases
+  resources :desk_labels
 end

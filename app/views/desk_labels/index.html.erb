@@ -1,0 +1,23 @@
+<h1>Labels</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Enabled</th>
+	  <th>Color</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @desk_cases.each do |desk_case| %>
+      <tr>
+     	<td><%= desk_case["name"] %></td>
+     	<td><%= desk_case["enabled"] %></td>
+      	<td><%= desk_case["color"] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

@@ -1,0 +1,25 @@
+<h1>Listing desk_cases</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @desk_cases.each do |desk_case| %>
+      <tr>
+        <td><%= link_to 'Show', desk_case %></td>
+        <td><%= link_to 'Edit', edit_desk_case_path(desk_case) %></td>
+        <td><%= link_to 'Destroy', desk_case, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Desk case', new_desk_case_path %>
