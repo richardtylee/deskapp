@@ -1,20 +1,35 @@
 require 'active_record/validations'
 
 class DeskLabel
-  attr_accessor :name, :description, :color
+  attr_accessor :name, :description, :color, :enabled
+  
+  def self.all
+    desk_labels = []
+     response = $access.get("https://richardtylee.desk.com/api/v2/labels")
+    
+    json = JSON.parse response.body
+    
+    hash_array = json["_embedded"]["entries"]
+    
+    hash_array.each do |hash|
+      desk_label = DeskLabel.new(hash)
+      desk_labels << desk_label
+    end
+    
+    return desk_labels
+  end
   
   def initialize(opts = {})
     self.name = opts["name"]
     self.description = opts["description"]
     self.color = opts["color"]
+    self.enabled = opts["active"] 
   end
   
   def save
     data = '{"name":"' + self.name + '","description":"'+ self.description +
       '", "types": ["case", "macro"], "color": "' + self.color + '"}'
     response = $access.post("https://richardtylee.desk.com/api/v2/labels", data)
-    
-    response_code_int = response.code.to_i
     
     if response.kind_of? Net::HTTPSuccess
       true

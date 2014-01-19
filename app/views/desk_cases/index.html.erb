@@ -26,16 +26,16 @@
       <tr>
       	<td>
       	  <% if @show_labels %>
-		    <%= check_box_tag("case_id[]", desk_case["id"]) %>
+		    <%= check_box_tag("case_id[]", desk_case.id) %>
 		  <% else %>
-		    <%= desk_case["id"] %>
+		    <%= desk_case.id %>
 		  <% end %>
 		</td>
-     	<td><%= desk_case["type"] %></td>
-     	<td><%= desk_case["subject"] %></td>
-      	<td><%= desk_case["status"] %></td>
+     	<td><%= desk_case.type %></td>
+     	<td><%= desk_case.subject %></td>
+      	<td><%= desk_case.subject %></td>
         <td>
-        <% desk_case["labels"].each do |label| %>
+        <% desk_case.labels.each do |label| %>
 		  <span><%= label %></span><br/>
 		<% end %>
 		</td>

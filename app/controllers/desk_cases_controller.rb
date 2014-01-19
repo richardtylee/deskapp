@@ -2,24 +2,20 @@ class DeskCasesController < ApplicationController
   before_action :set_desk_case, only: [:show, :edit, :update, :destroy]
 
   # GET /desk_cases
-  # GET /desk_cases.json
   def index
     @show_labels = params[:labels] == "true"
     
     if @show_labels
-      response = $access.get("https://richardtylee.desk.com/api/v2/labels")
-      json = JSON.parse response.body
-      @desk_labels = json["_embedded"]["entries"]
+     
+      @desk_labels = DeskLabel.all
       @label_option_array = [["-- Select Label --","-"]]
       @desk_labels.each do |label|
-        name = label["name"]
+        name = label.name
         @label_option_array << [name, name]
       end
     end
     
-    response = $access.get("https://richardtylee.desk.com/api/v2/cases?filter_id=1850994&sort_field=created_at&sort_direction=asc")
-    json = JSON.parse response.body
-    @desk_cases = json["_embedded"]["entries"]
+    @desk_cases = DeskCase.all
   end
   
   def append_label
@@ -32,23 +28,23 @@ class DeskCasesController < ApplicationController
     case_ids.each do |case_id|
       # TODO: Check case exists   
 
-      # TODO: Move code to model
       # Update the case
-      data = '{"label_action":"append", "labels":["' + label + '"] }'
-      response = $access.put("https://richardtylee.desk.com/api/v2/cases/" + case_id, data)
+      response_value = DeskCase.append_label(case_id, label)
       
       # If not successfully, log the error
-      if ! response.kind_of? Net::HTTPSuccess
+      if response_value != true
          json = JSON.parse response.body
          error_msg += json["message"] +  " : " + json["errors"].inspect
          fail = true
       end
     end
+    
     if fail
       flash[:error] = error_msg
     else
       flash[:notice] = "All labels appended successfully."
     end
+    
     redirect_to :action => :index
   end
 

@@ -1,10 +1,6 @@
 class DeskLabelsController < ApplicationController
   def index
-    response = $access.get("https://richardtylee.desk.com/api/v2/labels")
-    
-    json = JSON.parse response.body
-    
-    @desk_labels = json["_embedded"]["entries"]    
+    @desk_labels = DeskLabel.all   
   end
   
   def new

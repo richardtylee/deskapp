@@ -12,10 +12,10 @@
   <tbody>
     <% @desk_labels.each do |desk_label| %>
       <tr>
-     	<td><%= desk_label["name"] %></td>
-		<td><%= desk_label["description"] %></td>
-     	<td><%= desk_label["enabled"]==true ? "Yes" : "No" %></td>
-      	<td><%= desk_label["color"] %></td>
+     	<td><%= desk_label.name %></td>
+		<td><%= desk_label.description %></td>
+     	<td><%= desk_label.enabled==true ? "Yes" : "No" %></td>
+      	<td><%= desk_label.color %></td>
       </tr>
     <% end %>
   </tbody>
