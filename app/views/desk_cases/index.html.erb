@@ -7,6 +7,7 @@
       <th>Type</th>
       <th>Subject</th>
       <th>Status</th>
+	  <th>Labels</th>
     </tr>
   </thead>
 
@@ -17,12 +18,11 @@
      	<td><%= desk_case["type"] %></td>
      	<td><%= desk_case["subject"] %></td>
       	<td><%= desk_case["status"] %></td>
-
-<!--
-        <td><%= link_to 'Show', desk_case %></td>
-        <td><%= link_to 'Edit', edit_desk_case_path(desk_case) %></td>
-        <td><%= link_to 'Destroy', desk_case, method: :delete, data: { confirm: 'Are you sure?' } %></td>
--->
+        <td>
+        <% desk_case["labels"].each do |label| %>
+		  <span><%= label %></span><br/>
+		<% end %>
+		</td>
       </tr>
     <% end %>
   </tbody>
