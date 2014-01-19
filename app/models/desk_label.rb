@@ -5,7 +5,7 @@ class DeskLabel
   
   def self.all
     desk_labels = []
-     response = $access.get("https://richardtylee.desk.com/api/v2/labels")
+     response = $access.get(DESK_COM_CONFIG["subdomain"] + "/api/" + DESK_COM_CONFIG["api_version"] + "/labels")
     
     json = JSON.parse response.body
     
@@ -29,7 +29,7 @@ class DeskLabel
   def save
     data = '{"name":"' + self.name + '","description":"'+ self.description +
       '", "types": ["case", "macro"], "color": "' + self.color + '"}'
-    response = $access.post("https://richardtylee.desk.com/api/v2/labels", data)
+    response = $access.post(DESK_COM_CONFIG["subdomain"] + "/api/" + DESK_COM_CONFIG["api_version"] + "/labels", data)
     
     if response.kind_of? Net::HTTPSuccess
       true

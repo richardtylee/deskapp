@@ -1,14 +1,18 @@
+CONFIG = YAML.load_file("#{Rails.root.to_s}/config/settings.yml")
+
+DESK_COM_CONFIG = CONFIG["desk_com"]
+
 consumer = OAuth::Consumer.new(
-  "UKKln9ZW7XCG2qCvtGHw",
-  "LVOIrAHspvdZ7dY1XtoO0oHX6o41fhnNVqyhZ00O",
-  :site => "https://richardtylee.desk.com",
+  DESK_COM_CONFIG["customer_key"],
+  DESK_COM_CONFIG["customer_secret"],
+  :site => DESK_COM_CONFIG["subdomain"],
   :scheme => :header
 )
 
 access_token = OAuth::AccessToken.from_hash(
   consumer,
-  :oauth_token => "UMEVwrygiEVUBRquQpbA",
-  :oauth_token_secret => "gtwKICYAMau4ZTVFkQ6huMZtlSbpG0czs8sKrLlq"
+  :oauth_token => DESK_COM_CONFIG["access_token"],
+  :oauth_token_secret => DESK_COM_CONFIG["access_token_secret"]
 )
 
 $access = access_token

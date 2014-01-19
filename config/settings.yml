@@ -1,0 +1,7 @@
+desk_com:
+  subdomain: https://richardtylee.desk.com
+  customer_key: UKKln9ZW7XCG2qCvtGHw
+  customer_secret: LVOIrAHspvdZ7dY1XtoO0oHX6o41fhnNVqyhZ00O
+  access_token: UMEVwrygiEVUBRquQpbA
+  access_token_secret: gtwKICYAMau4ZTVFkQ6huMZtlSbpG0czs8sKrLlq
+  api_version: v2

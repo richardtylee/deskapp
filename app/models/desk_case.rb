@@ -5,7 +5,7 @@ class DeskCase
   
   def self.all
     desk_cases = []
-    response = $access.get("https://richardtylee.desk.com/api/v2/cases?filter_id=1850994&sort_field=created_at&sort_direction=asc")
+    response = $access.get(DESK_COM_CONFIG["subdomain"] + "/api/" + DESK_COM_CONFIG["api_version"] + "/cases?filter_id=1850994&sort_field=created_at&sort_direction=asc")
     json = JSON.parse response.body
     hash_array = json["_embedded"]["entries"]
     
@@ -20,7 +20,7 @@ class DeskCase
   def self.append_label(case_id, label)
     # Update the case
     data = '{"label_action":"append", "labels":["' + label + '"] }'
-    response = $access.put("https://richardtylee.desk.com/api/v2/cases/" + case_id, data)
+    response = $access.put(DESK_COM_CONFIG["subdomain"] + "/api/" + DESK_COM_CONFIG["api_version"] + "/cases/" + case_id, data)
     
     if response.kind_of? Net::HTTPSuccess
       true
