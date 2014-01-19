@@ -9,12 +9,12 @@
 </head>
 <body>
 
-<div style="margin: 0px auto; width: 680px; min-height: 700px; background-color: #AA0000; border:2px solid; border-radius:25px;">
-<div id="nav" class="nav" style="margin: 25px; padding: 0px; background-color: #C8AA76; font-size: 16px;"">
-  <a href="/"><span style="padding: 5px">Home</span></a> |
+<div id="container" class="container">
+<div id="nav" class="nav">
+  <a href="/"><span style="padding: 5px">Home</span></a>|
 </div>
 
-<div style="background-color: white; margin: 25px; padding: 25px">
+<div id="main" class="main">
 
 <% if flash[:error] %>
   <p class="error"><%=h flash[:error] %></p>
@@ -26,7 +26,7 @@
 
 </div>
 
-<div class="logo_container" style="margin: 0 auto; text-align: center">
+<div id="logo_container" class="logo_container">
 <!--
 <img src="http://www.desk.com/resources/_v3/css/img/desk-logo.png"></img>
 -->

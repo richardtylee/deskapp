@@ -15,6 +15,40 @@ body {
 	background-color: #C8AA76;
 }
 
+.container {
+	margin: 0px auto;
+	width: 680px;
+	min-height: 700px;
+	background-color: #AA0000;
+	border:2px solid;
+	border-radius:25px;
+}
+
+.nav {
+	margin: 25px;
+	padding: 0px;
+	background-color: #C8AA76;
+	font-size: 16px;
+	color: rgba(0, 0, 0, 0.2);
+}
+
+.nav a {
+	text-decoration : none;
+	font-weight : bold;
+}
+
+.nav a:hover {
+	text-decoration : none;
+	background-color: #C8AA76;
+	color: rgba(0, 0, 0, 1);
+}
+
+.main {
+	background-color: white;
+	margin: 25px;
+	padding: 25px	
+}
+
 p.error {
 	padding: 10px;
 	background-color: #FA8072;
@@ -23,4 +57,19 @@ p.error {
 p.notice {
     padding: 10px;
 	background-color: #98FB98;
+}
+
+.logo_container {
+	margin: 0 auto; text-align: center
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-spacing: 0px;
+}
+
+tr:nth-child(odd) td 
+{
+  color:#000000;
+  background-color: #F2F2F2;
 }
