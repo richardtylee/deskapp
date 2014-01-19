@@ -14,20 +14,14 @@ class DeskLabelsController < ApplicationController
   def create
     @desk_label = DeskLabel.new(params["desk_label"])
     respond_to do |format|
-      if @desk_label.save
+      response_value = @desk_label.save
+      if response_value == true
+        flash[:notice] = "Label created successfully"
         format.html { redirect_to action: 'index' }
       else
+        flash[:error] = response_value
         format.html { redirect_to action: 'new' }
       end
     end
-=begin
-    respond_to do |format|
-      if @desk_label.save
-        format.html { redirect_to @desk_label, notice: 'Desk label was successfully created.' }
-      else
-        format.html { render action: 'new' }
-      end
-    end
-=end
   end
 end

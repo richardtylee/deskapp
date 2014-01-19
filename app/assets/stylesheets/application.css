@@ -14,3 +14,13 @@
 body {
 	background-color: #C8AA76;
 }
+
+p.error {
+	padding: 10px;
+	background-color: #FA8072;
+}
+
+p.notice {
+    padding: 10px;
+	background-color: #98FB98;
+}

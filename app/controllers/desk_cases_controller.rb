@@ -19,7 +19,6 @@ class DeskCasesController < ApplicationController
     
     response = $access.get("https://richardtylee.desk.com/api/v2/cases?filter_id=1850994&sort_field=created_at&sort_direction=asc")
     json = JSON.parse response.body
-    puts json
     @desk_cases = json["_embedded"]["entries"]
   end
   
@@ -27,14 +26,29 @@ class DeskCasesController < ApplicationController
     case_ids = params[:case_id]
     label = params[:label]
     
+    fail = false
+    error_msg = ""
+    
     case_ids.each do |case_id|
-      # Check case exists   
+      # TODO: Check case exists   
 
-      # Data
+      # TODO: Move code to model
+      # Update the case
       data = '{"label_action":"append", "labels":["' + label + '"] }'
       response = $access.put("https://richardtylee.desk.com/api/v2/cases/" + case_id, data)
+      
+      # If not successfully, log the error
+      if ! response.kind_of? Net::HTTPSuccess
+         json = JSON.parse response.body
+         error_msg += json["message"] +  " : " + json["errors"].inspect
+         fail = true
+      end
     end
-    
+    if fail
+      flash[:error] = error_msg
+    else
+      flash[:notice] = "All labels appended successfully."
+    end
     redirect_to :action => :index
   end
 

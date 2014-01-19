@@ -13,7 +13,15 @@
 <div id="nav" class="nav" style="margin: 25px; padding: 0px; background-color: #C8AA76; font-size: 16px;"">
   <a href="/"><span style="padding: 5px">Home</span></a> |
 </div>
+
 <div style="background-color: white; margin: 25px; padding: 25px">
+
+<% if flash[:error] %>
+  <p class="error"><%=h flash[:error] %></p>
+<% elsif flash[:notice] %>
+  <p class="notice"><%=h flash[:notice] %></p>
+<% end %>
+
 <%= yield %>
 
 </div>

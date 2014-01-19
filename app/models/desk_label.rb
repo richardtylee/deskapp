@@ -1,10 +1,7 @@
 require 'active_record/validations'
 
 class DeskLabel
-  attr_accessor :id, :name, :description, :color
-  
-  # For the ActiveRecord::Errors object.
-  #attr_accessor :errors
+  attr_accessor :name, :description, :color
   
   def initialize(opts = {})
     self.name = opts["name"]
@@ -12,19 +9,18 @@ class DeskLabel
     self.color = opts["color"]
   end
   
-  # Dummy stub to make validtions happy.
   def save
-    puts self.color
     data = '{"name":"' + self.name + '","description":"'+ self.description +
       '", "types": ["case", "macro"], "color": "' + self.color + '"}'
     response = $access.post("https://richardtylee.desk.com/api/v2/labels", data)
     
     response_code_int = response.code.to_i
     
-    if response.code.to_i >= 200 && response.code.to_i <= 299
+    if response.kind_of? Net::HTTPSuccess
       true
     else
-      false
+      json = JSON.parse response.body
+      json["message"] +  " : " + json["errors"].inspect
     end
   end
   
@@ -40,12 +36,12 @@ class DeskLabel
   end
   
   def to_key
-    key = self.id
+    key = self.name
     [key] if key
   end
   
   def persisted?
-    !(self.id.nil?)
+    !(self.name.nil?)
   end
   
   # Dummy stub to make validtions happy.
