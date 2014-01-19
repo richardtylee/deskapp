@@ -1,32 +1,36 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-		<title>Desk.com - Prove Yourself</title>
-		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-		<script type="text/javascript">
-			$( document ).ready(function() {
-				$( ".action_menu" ).change(function() {
-					if($( this ).val() == 1) {
-  						window.location.href = "/desk_cases"			
-					} else if ($( this ).val() == 2) {
-						window.location.href = "/desk_labels"	
-					} else if ($( this ).val() == 3) {
-						window.location.href = "/desk_labels/new"	
-					} else if ($( this ).val() == 4) {
-						window.location.href = "/desk_cases?labels=true"	
-					}
-				});
-			});	
-		</script>
-	</head>
-	<body>
-		<select class="action_menu">
-			<option value="0">Select Action ...</option>
-			<option value="1">List Cases</option>
-			<option value="2">List Labels</option>
-			<option value="3">Create Label</option>
-			<option value="4">Label Cases</option>
-		</select>
-	</body>
-</html>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script type="text/javascript">
+	$( document ).ready(function() {
+		$( ".action_menu" ).change(function() {
+			if($( this ).val() == 1) {
+				window.location.href = "/desk_cases"			
+			} else if ($( this ).val() == 2) {
+				window.location.href = "/desk_labels"	
+			} else if ($( this ).val() == 3) {
+				window.location.href = "/desk_labels/new"	
+			} else if ($( this ).val() == 4) {
+				window.location.href = "/desk_cases?labels=true"	
+			}
+		});
+	});	
+</script>
+		
+<h1>Desk.com API Demo</h1>
+<p>This is the Desk.com API Demo.  This application is connected to my Desk.com account.  This demo performs four actions:</p>
+<ol>
+	<li>Gets a list of cases available in the first case filter (Inbox) and presents them</li>
+	<li>Gets a list of labels in the site and presents them</li>
+	<li>Creates a label</li>
+	<li>Assigns labels to cases (Removing labels not yet supported)</li>
+</ol>
+	
+<div style="margin: 20px auto; text-align: center">
+    <p>Choose from an action below:</p>
+	<select class="action_menu">
+		<option value="0">Select Action ...</option>
+		<option value="1">List Cases</option>
+		<option value="2">List Labels</option>
+		<option value="3">Create Label</option>
+		<option value="4">Label Cases</option>
+	</select>
+</div>
