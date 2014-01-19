@@ -1,9 +1,19 @@
 <h1>Cases</h1>
 
-<table>
+<%= form_tag("/desk_cases/append_label", method: "post") do %>
+
+<% if @show_labels %>
+
+	<%= select_tag(:label, options_for_select(@label_option_array)) %>
+	
+	<%= submit_tag("Append Label") %>
+
+<% end %>
+
+<table border="1">
   <thead>
     <tr>
-      <th>ID</th>
+      <th></th>
       <th>Type</th>
       <th>Subject</th>
       <th>Status</th>
@@ -14,7 +24,13 @@
   <tbody>
     <% @desk_cases.each do |desk_case| %>
       <tr>
-      	<td><%= desk_case["id"] %></td>
+      	<td>
+      	  <% if @show_labels %>
+		    <%= check_box_tag("case_id[]", desk_case["id"]) %>
+		  <% else %>
+		    <%= desk_case["id"] %>
+		  <% end %>
+		</td>
      	<td><%= desk_case["type"] %></td>
      	<td><%= desk_case["subject"] %></td>
       	<td><%= desk_case["status"] %></td>
@@ -27,5 +43,7 @@
     <% end %>
   </tbody>
 </table>
+
+<% end %>
 
 <br>

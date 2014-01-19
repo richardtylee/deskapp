@@ -13,6 +13,8 @@
 						window.location.href = "/desk_labels"	
 					} else if ($( this ).val() == 3) {
 						window.location.href = "/desk_labels/new"	
+					} else if ($( this ).val() == 4) {
+						window.location.href = "/desk_cases?labels=true"	
 					}
 				});
 			});	
@@ -24,6 +26,7 @@
 			<option value="1">List Cases</option>
 			<option value="2">List Labels</option>
 			<option value="3">Create Label</option>
+			<option value="4">Label Cases</option>
 		</select>
 	</body>
 </html>

@@ -53,6 +53,9 @@ Deskapp::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  post "desk_cases/append_label" => "desk_cases#append_label"
+
   resources :desk_cases
   resources :desk_labels
   
