@@ -23,7 +23,7 @@ class DeskLabel
     self.name = opts["name"]
     self.description = opts["description"]
     self.color = opts["color"]
-    self.enabled = opts["active"] == "true"
+    self.enabled = opts["enabled"]
   end
   
   def save
