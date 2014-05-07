@@ -5,7 +5,7 @@ class DeskCase
   
   def self.all
     desk_cases = []
-    response = $access.get(DESK_COM_CONFIG["subdomain"] + "/api/" + DESK_COM_CONFIG["api_version"] + "/cases?filter_id=1850994&sort_field=created_at&sort_direction=asc")
+    response = $access.get(DESK_COM_CONFIG["subdomain"] + "/api/" + DESK_COM_CONFIG["api_version"] + "/cases?filter_id=1974249&sort_field=created_at&sort_direction=asc")
     json = JSON.parse response.body
     hash_array = json["_embedded"]["entries"]
     
