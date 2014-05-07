@@ -1,28 +1,25 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Desk.com API Demo
 
-Things you may want to cover:
+This is the Desk.com API Demo. This application is connected to my Desk.com account. This demo performs four actions:
+
+    Gets a list of cases available in the first case filter (Inbox) and presents them
+    Gets a list of labels in the site and presents them
+    Creates a label
+    Assigns labels to cases (Removing labels not yet supported)
+    
+Demo Location: http://gentle-castle-7782.herokuapp.com/
 
 * Ruby version
 
-* System dependencies
+  ruby 1.9.3p484 (2013-11-22) [i386-mingw32]
+  Rails 4.0.2
 
 * Configuration
 
-* Database creation
-
-* Database initialization
+  desk.com credentials are stored in /config/settings.yml
 
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+  TODO
